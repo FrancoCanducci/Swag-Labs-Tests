@@ -1,4 +1,4 @@
-# README - Testes Automatizados de Performance e Funcionalidade
+# Testes Automatizados de Performance e Funcionalidade
 
 ## Descrição
 
