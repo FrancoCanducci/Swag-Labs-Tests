@@ -23,7 +23,7 @@ Adicionar Produto: Adiciona um produto ao carrinho.
 Checkout: Preenche as informações necessárias para o checkout.
 Finalizar Checkout: Clica no botão de finalizar e aguarda a URL mudar para a página de inventário.
 
-2.Teste do Usuário com Glitch de Performance (performance_glitch_user)
+2. Teste do Usuário com Glitch de Performance (performance_glitch_user)
 Este teste simula um processo de checkout e mede o tempo necessário para a transição para a página de inventário após a conclusão do checkout.
 
 Fluxo do Teste:
