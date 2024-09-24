@@ -1,47 +1,49 @@
-# Testes E2E para a Aplicação Sauce Demo
+# README - Testes Automatizados de Performance e Funcionalidade
 
-Este repositório contém um conjunto de testes end-to-end (E2E) desenvolvidos para a aplicação [Sauce Demo](https://www.saucedemo.com/).
+## Descrição
 
-## Descrição dos Testes
+Este repositório contém uma série de testes automatizados usando Selenium para verificar a funcionalidade e a performance de usuários no site da Sauce Demo. Os testes incluem simulações de login, adição de produtos ao carrinho e processos de checkout.
 
-Os testes verificam as seguintes funcionalidades críticas da aplicação:
+## Pré-requisitos
 
-1. **Login e Logout**
-   - Testes com diferentes usuários para validar o login e logout.
-
-2. **Navegação e Acesso a Produtos**
-   - Verificação se os produtos são exibidos corretamente após o login.
-   - Acesso às informações dos produtos e verificação de erros para usuários problemáticos.
-
-3. **Verificação de Erros**
-   - Cenários com o usuário "problem_user" e "error_user" para verificar se as mensagens de erro aparecem conforme esperado, como quando o sobrenome não é preenchido no processo de checkout.
-
-## Usuários Testados
-
-### Teste com o Usuário Problem User
-
-- O teste faz login com o usuário "problem_user".
-- Adiciona um produto ao carrinho e tenta acessar a página de detalhes de um produto.
-- Verifica se a mensagem de erro "ITEM NOT FOUND" é exibida corretamente ao tentar acessar um item não disponível.
-- Simula um erro ao tentar continuar o checkout sem preencher o sobrenome, e verifica se a mensagem de erro "Error: Last Name is required" é exibida.
-
-### Teste com o Usuário Error User
-
-- O teste faz login com o usuário "error_user".
-- Adiciona um produto ao carrinho e tenta acessar um produto que falha ao carregar a descrição.
-- Verifica se a mensagem de erro correta aparece quando o sobrenome não é preenchido durante o checkout, confirmando se a aplicação lida adequadamente com campos obrigatórios.
-- Registra as mensagens de erro durante o teste para garantir que os problemas sejam documentados.
-
-## Tecnologias Utilizadas
-
-- Python
+- Python 3.x
 - Selenium
-- Unittest
+- WebDriver do Chrome
+- Biblioteca `unittest` (inclusa no Python)
 
-### Pré-requisitos
+## Executando os Testes
 
-1. Python instalado.
-2. Dependências do Selenium instaladas. Você pode instalar com o seguinte comando:
+1. Teste do Usuário Padrão (standard_user)
+Este teste verifica se o usuário padrão consegue realizar o login, adicionar um produto ao carrinho e completar o checkout.
 
-   ```bash
-   pip install selenium
+Fluxo do Teste:
+
+Login: Acessa a página de login e insere as credenciais do standard_user.
+Adicionar Produto: Adiciona um produto ao carrinho.
+Checkout: Preenche as informações necessárias para o checkout.
+Finalizar Checkout: Clica no botão de finalizar e aguarda a URL mudar para a página de inventário.
+
+2.Teste do Usuário com Glitch de Performance (performance_glitch_user)
+Este teste simula um processo de checkout e mede o tempo necessário para a transição para a página de inventário após a conclusão do checkout.
+
+Fluxo do Teste:
+
+Login: Acessa a página de login e insere as credenciais do performance_glitch_user.
+Adicionar Produto: Adiciona um produto ao carrinho.
+Checkout: Preenche as informações necessárias, incluindo nome, sobrenome e CEP.
+Finalizar Checkout: Clica no botão de finalizar e aguarda a URL mudar para a página de inventário.
+Medição de Performance: Calcula e registra o tempo necessário para a URL mudar.
+
+3. Teste do Usuário com Problemas (problem_user)
+Este teste verifica se o usuário com problemas consegue realizar o login, adicionar um produto ao carrinho e completar o checkout, mesmo enfrentando problemas na interface.
+
+Fluxo do Teste:
+
+Login: Acessa a página de login e insere as credenciais do problem_user.
+Adicionar Produto: Adiciona um produto ao carrinho.
+Checkout: Preenche as informações necessárias e tenta finalizar o checkout.
+Verificação de Erros: Confirma se os erros apropriados aparecem na interface quando o usuário tenta concluir o checkout com informações inválidas ou incompletas.
+
+
+
+
